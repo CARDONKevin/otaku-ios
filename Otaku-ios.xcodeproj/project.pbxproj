@@ -15,6 +15,7 @@
 		EC1DBAC823D7025300143233 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1DBAC723D7025300143233 /* Assets.xcassets */; };
 		EC1DBACB23D7025300143233 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1DBAC923D7025300143233 /* LaunchScreen.storyboard */; };
 		EC8AD6D623D7157D00B5CF71 /* FilmDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8AD6D523D7157D00B5CF71 /* FilmDataResponse.swift */; };
+		ECC9657323D7287D00BEB3D7 /* ListFilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC9657223D7287D00BEB3D7 /* ListFilmTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		EC1DBACA23D7025300143233 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC1DBACC23D7025300143233 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC8AD6D523D7157D00B5CF71 /* FilmDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDataResponse.swift; sourceTree = "<group>"; };
+		ECC9657223D7287D00BEB3D7 /* ListFilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilmTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		EC1DBABD23D7024C00143233 /* Otaku-ios */ = {
 			isa = PBXGroup;
 			children = (
+				ECC9657423D72D3300BEB3D7 /* layout */,
 				EC8AD6D423D7143600B5CF71 /* models */,
 				EC1DBABE23D7024C00143233 /* AppDelegate.swift */,
 				EC1DBAC023D7024C00143233 /* SceneDelegate.swift */,
@@ -91,6 +94,14 @@
 				EC8AD6D523D7157D00B5CF71 /* FilmDataResponse.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		ECC9657423D72D3300BEB3D7 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				ECC9657223D7287D00BEB3D7 /* ListFilmTableViewCell.swift */,
+			);
+			path = layout;
 			sourceTree = "<group>";
 		};
 		F4EFD87289F564EF073728B1 /* Pods */ = {
@@ -221,6 +232,7 @@
 				EC1DBABF23D7024C00143233 /* AppDelegate.swift in Sources */,
 				EC8AD6D623D7157D00B5CF71 /* FilmDataResponse.swift in Sources */,
 				EC1DBAC123D7024C00143233 /* SceneDelegate.swift in Sources */,
+				ECC9657323D7287D00BEB3D7 /* ListFilmTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
