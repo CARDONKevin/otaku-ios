@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		EC1DBAC623D7024C00143233 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1DBAC423D7024C00143233 /* Main.storyboard */; };
 		EC1DBAC823D7025300143233 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1DBAC723D7025300143233 /* Assets.xcassets */; };
 		EC1DBACB23D7025300143233 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1DBAC923D7025300143233 /* LaunchScreen.storyboard */; };
+		EC8AD6D623D7157D00B5CF71 /* FilmDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8AD6D523D7157D00B5CF71 /* FilmDataResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		EC1DBAC723D7025300143233 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC1DBACA23D7025300143233 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC1DBACC23D7025300143233 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC8AD6D523D7157D00B5CF71 /* FilmDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDataResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		EC1DBABD23D7024C00143233 /* Otaku-ios */ = {
 			isa = PBXGroup;
 			children = (
+				EC8AD6D423D7143600B5CF71 /* models */,
 				EC1DBABE23D7024C00143233 /* AppDelegate.swift */,
 				EC1DBAC023D7024C00143233 /* SceneDelegate.swift */,
 				EC1DBAC223D7024C00143233 /* ViewController.swift */,
@@ -82,13 +85,20 @@
 			path = "Otaku-ios";
 			sourceTree = "<group>";
 		};
+		EC8AD6D423D7143600B5CF71 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				EC8AD6D523D7157D00B5CF71 /* FilmDataResponse.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		F4EFD87289F564EF073728B1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				1091ECCDCB038C88E4708B7B /* Pods-Otaku-ios.debug.xcconfig */,
 				DFA4B4F21E7C85C4454FC23E /* Pods-Otaku-ios.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,6 +219,7 @@
 			files = (
 				EC1DBAC323D7024C00143233 /* ViewController.swift in Sources */,
 				EC1DBABF23D7024C00143233 /* AppDelegate.swift in Sources */,
+				EC8AD6D623D7157D00B5CF71 /* FilmDataResponse.swift in Sources */,
 				EC1DBAC123D7024C00143233 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
