@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController {
+    
+    var selectedFilm: FilmDataResponse?
 
     @IBOutlet weak var tableFilms: UITableView!
     
@@ -18,7 +20,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setup()
+    }
+    
+    func setup () {
         tableFilms.dataSource = self
+        tableFilms.delegate = self
         getFilms()
     }
     
@@ -36,7 +43,24 @@ class ViewController: UIViewController {
         }
     }
     }
+    
+    override func prepare(for segue:
+        UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailFromList" {
+            let detailVC = segue.destination as? DetailsViewController
+            detailVC?.idFilm = selectedFilm?.id
+        }
+    }
 
+}
+
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //AVEC LES SEGUE
+        selectedFilm = listOfFilms[indexPath.row]
+        self.performSegue(withIdentifier: "showDetailFromList", sender: nil)
+    }
 }
 
 
