@@ -130,7 +130,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pIg-N8-hWu"/>
+                    <navigationItem key="navigationItem" id="pIg-N8-hWu">
+                        <rightBarButtonItems>
+                            <barButtonItem title="sort by date" id="oty-C5-HMg">
+                                <connections>
+                                    <action selector="sortByDate:" destination="BYZ-38-t0r" id="7i5-Kd-Vyc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="sort by name" id="6E8-cK-iGK">
+                                <connections>
+                                    <action selector="sortByName:" destination="BYZ-38-t0r" id="SHq-UT-haw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="sort by score" id="L00-o8-265">
+                                <connections>
+                                    <action selector="sortByScore:" destination="BYZ-38-t0r" id="h8d-Nr-toa"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableFilms" destination="yPJ-yv-f2V" id="bMI-Sh-JIk"/>
                         <segue destination="ryw-5L-zy0" kind="show" identifier="showDetailFromList" id="a6i-8N-Z0k"/>

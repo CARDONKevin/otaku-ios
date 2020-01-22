@@ -58,7 +58,69 @@ class ViewController: UIViewController {
             detailVC?.idFilm = selectedFilm?.id
         }
     }
+    
+    
+    @IBAction func sortByScore(_ sender: Any) {
+        let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByScore") ?? false
+        
+        if isInAsc {
+            if listOfFilms.count > 0 {
+                 self.listOfFilms = listOfFilms.sorted { Int($0.rtScore!)! >  Int($1.rtScore!)! }
+                 tableFilms.dataSource = self
+                 tableFilms.reloadData()
+             }
+        } else {
+            if listOfFilms.count > 0 {
+                      self.listOfFilms = listOfFilms.sorted { Int($0.rtScore!)! <  Int($1.rtScore!)! }
+                      tableFilms.dataSource = self
+                      tableFilms.reloadData()
+                  }
+        }
+        
+        UserDefaults.standard.set(!isInAsc, forKey: "sortByScore")
+    }
+    
+    @IBAction func sortByName(_ sender: Any) {
+        let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByName") ?? false
+        
+        if isInAsc {
+            if listOfFilms.count > 0 {
+                self.listOfFilms = listOfFilms.sorted { $0.title! >  $1.title! }
+                tableFilms.dataSource = self
+                tableFilms.reloadData()
+            }
+        } else {
+            if listOfFilms.count > 0 {
+                self.listOfFilms = listOfFilms.sorted { $0.title! <  $1.title! }
+                tableFilms.dataSource = self
+                tableFilms.reloadData()
+            }
+        }
+        
+        UserDefaults.standard.set(!isInAsc, forKey: "sortByName")
 
+    }
+    
+    
+    @IBAction func sortByDate(_ sender: Any) {
+        let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByDate") ?? false
+        
+        if isInAsc {
+            if listOfFilms.count > 0 {
+                self.listOfFilms = listOfFilms.sorted { Int($0.releaseDate!)! >  Int($1.releaseDate!)! }
+                tableFilms.dataSource = self
+                tableFilms.reloadData()
+            }
+        } else {
+            if listOfFilms.count > 0 {
+                self.listOfFilms = listOfFilms.sorted { Int($0.releaseDate!)! <  Int($1.releaseDate!)! }
+                tableFilms.dataSource = self
+                tableFilms.reloadData()
+            }
+        }
+        
+        UserDefaults.standard.set(!isInAsc, forKey: "sortByDate")
+    }
 }
 
 
