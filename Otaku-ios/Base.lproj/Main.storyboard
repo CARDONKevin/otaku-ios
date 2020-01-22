@@ -64,17 +64,43 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lii-fW-4wM">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tOW-QG-u2P">
                                                             <rect key="frame" x="268" y="0.0" width="130" height="136"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="lii-fW-4wM" secondAttribute="height" multiplier="1:1" id="7hs-Mv-dh7"/>
-                                                            </constraints>
-                                                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <connections>
-                                                                <action selector="addOrDeleteFavorite:" destination="4m2-6G-zdT" eventType="touchUpInside" id="eaO-VO-GMb"/>
-                                                            </connections>
-                                                        </button>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCk-qh-Y0v">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="43.5" height="136"/>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                </view>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gap-j8-WlT">
+                                                                    <rect key="frame" x="43.5" y="0.0" width="43" height="136"/>
+                                                                    <subviews>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZQ-Qh-heS">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="43" height="45.5"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        </view>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lii-fW-4wM">
+                                                                            <rect key="frame" x="0.0" y="45.5" width="43" height="45"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" secondItem="lii-fW-4wM" secondAttribute="height" multiplier="1:1" id="7hs-Mv-dh7"/>
+                                                                            </constraints>
+                                                                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <state key="normal" title="Button"/>
+                                                                            <connections>
+                                                                                <action selector="addOrDeleteFavorite:" destination="4m2-6G-zdT" eventType="touchUpInside" id="eaO-VO-GMb"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6NH-r0-ebl">
+                                                                            <rect key="frame" x="0.0" y="90.5" width="43" height="45.5"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        </view>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDH-0Z-DWd">
+                                                                    <rect key="frame" x="86.5" y="0.0" width="43.5" height="136"/>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                </view>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
