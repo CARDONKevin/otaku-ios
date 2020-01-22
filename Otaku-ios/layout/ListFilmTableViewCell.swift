@@ -9,7 +9,12 @@
 import UIKit
 
 class ListFilmTableViewCell: UITableViewCell {
+    var isFavorite: Bool?
+    var film: FilmDataResponse?
 
+    
+    
+    @IBOutlet weak var bt_favorite: UIButton!
     @IBOutlet weak var score_label: UILabel!
     @IBOutlet weak var title_label: UILabel!
     override func awakeFromNib() {
@@ -29,8 +34,34 @@ class ListFilmTableViewCell: UITableViewCell {
     //Public Functions
     func fill(withFilmDataResponse film: FilmDataResponse) {
         title_label.text = film.title
-        score_label.text = film.rtScore
+        score_label.text = "\(film.rtScore as! String)/100"
+        changeButtonStatus(film: film)
     }
-
-
+    
+    func changeButtonStatus(film: FilmDataResponse?) {
+        if let id = film?.id {
+            self.film = film
+          isFavorite = UserDefaults.standard.bool(forKey: id) ?? false
+            
+            if let choice = isFavorite {
+                if choice {
+                    bt_favorite.setImage(UIImage(named: "favorite"), for: .normal)
+                    
+                }else {
+                    bt_favorite.setImage(UIImage(named: "notFavorite"), for: .normal)
+                        
+                }
+            }
+        }
+    }
+    
+    @IBAction func addOrDeleteFavorite(_ sender: Any) {
+        if let id = film?.id {
+            
+            let status: Bool = UserDefaults.standard.bool(forKey: id) ?? false
+            UserDefaults.standard.set(!status, forKey: id)
+            
+            changeButtonStatus(film: film)
+        }
+    }
 }
