@@ -73,11 +73,11 @@ class DetailsViewController: UIViewController {
         self.image_film.image = UIImage(named: id)
         }
         self.label_title.text = film.title
-        self.label_description.text = film.myDataDescription
-        self.label_producer.text = film.producer
-        self.label_director.text = film.director
-        self.label_releaseDate.text = film.releaseDate
-        self.label_rtScore.text = "\(film.rtScore!)/100"
+        self.label_description.text = "Description :  \(film.myDataDescription!)"
+        self.label_producer.text = "Producer : \(film.producer!)"
+        self.label_director.text = "Director : \(film.director!)"
+        self.label_releaseDate.text = "Release date :  \(film.releaseDate!)"
+        self.label_rtScore.text = "score : \(film.rtScore!)/100"
         
 
     }
