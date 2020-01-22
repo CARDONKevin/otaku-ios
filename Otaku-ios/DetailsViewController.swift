@@ -11,8 +11,10 @@ import Alamofire
 
 class DetailsViewController: UIViewController {
     
-    var idFilm: String?;
+    var idFilm: String?
+    var isFavorite: Bool?
     
+    @IBOutlet weak var bt_favoris: UIButton!
     @IBOutlet weak var image_film: UIImageView!
     @IBOutlet weak var label_rtScore: UILabel!
     @IBOutlet weak var label_releaseDate: UILabel!
@@ -30,6 +32,21 @@ class DetailsViewController: UIViewController {
     
     func setup() {
         getFilm()
+        changeButtonStatus()
+    }
+    
+    func changeButtonStatus() {
+        if let id = idFilm {
+          isFavorite = UserDefaults.standard.bool(forKey: id) ?? false
+            
+            if let choice = isFavorite {
+                if choice {
+                    bt_favoris.setImage(UIImage(named: "favorite"), for: .normal)
+                }else {
+                    bt_favoris.setImage(UIImage(named: "notFavorite"), for: .normal)
+                }
+            }
+        }
     }
     
     func getFilm() {
@@ -60,6 +77,19 @@ class DetailsViewController: UIViewController {
         self.label_releaseDate.text = film.releaseDate
         self.label_rtScore.text = film.rtScore
 
+    }
+    
+    
+    @IBAction func addOrDeleteFavorite(_ sender: Any) {
+        
+        if let id = idFilm {
+            
+            let status: Bool = UserDefaults.standard.bool(forKey: id) ?? false
+            UserDefaults.standard.set(!status, forKey: id)
+            
+            changeButtonStatus()
+        }
+        
     }
     
 
