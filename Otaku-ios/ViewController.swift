@@ -31,6 +31,8 @@ class ViewController: UIViewController {
     func setup () {
         tableFilms.dataSource = self
         tableFilms.delegate = self
+        tableFilms.rowHeight = UITableView.automaticDimension
+        tableFilms.estimatedRowHeight = 80.0
         getFilms()
     }
     
@@ -66,6 +68,9 @@ extension ViewController: UITableViewDelegate {
         selectedFilm = listOfFilms[indexPath.row]
         self.performSegue(withIdentifier: "showDetailFromList", sender: nil)
     }
+    //func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      //  return 80.0
+    //}
 }
 
 

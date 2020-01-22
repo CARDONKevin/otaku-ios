@@ -77,7 +77,7 @@ class DetailsViewController: UIViewController {
         self.label_producer.text = film.producer
         self.label_director.text = film.director
         self.label_releaseDate.text = film.releaseDate
-        self.label_rtScore.text = "\(film.rtScore as! String)/100"
+        self.label_rtScore.text = "\(film.rtScore!)/100"
         
 
     }

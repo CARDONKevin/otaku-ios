@@ -14,6 +14,7 @@ class ListFilmTableViewCell: UITableViewCell {
 
     
     
+    @IBOutlet weak var image_film: UIImageView!
     @IBOutlet weak var bt_favorite: UIButton!
     @IBOutlet weak var score_label: UILabel!
     @IBOutlet weak var title_label: UILabel!
@@ -33,8 +34,12 @@ class ListFilmTableViewCell: UITableViewCell {
     
     //Public Functions
     func fill(withFilmDataResponse film: FilmDataResponse) {
-        title_label.text = film.title
-        score_label.text = "\(film.rtScore as! String)/100"
+        if let id = film.id {
+            image_film.image = UIImage(named: id)
+        }
+        
+        title_label.text = film.title 
+        score_label.text = "score : \(film.rtScore!)/100"
         changeButtonStatus(film: film)
     }
     
