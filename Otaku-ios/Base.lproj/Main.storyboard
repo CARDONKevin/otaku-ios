@@ -132,6 +132,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="pIg-N8-hWu">
                         <rightBarButtonItems>
+                            <barButtonItem title="Loved" id="sSq-SL-Ezt">
+                                <connections>
+                                    <action selector="filterLovedOrNo:" destination="BYZ-38-t0r" id="8zb-ly-USH"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="sort by date" id="oty-C5-HMg">
                                 <connections>
                                     <action selector="sortByDate:" destination="BYZ-38-t0r" id="7i5-Kd-Vyc"/>

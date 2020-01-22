@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableFilms: UITableView!
     
     var listOfFilms: [FilmDataResponse] = []
+    var savedListOfFilms: [FilmDataResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class ViewController: UIViewController {
         {
         case .success(let films):
             self?.listOfFilms = films
+            self?.savedListOfFilms = films
             self?.tableFilms.reloadData()
             
             //
@@ -61,6 +63,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func sortByScore(_ sender: Any) {
+        self.listOfFilms = self.savedListOfFilms
+
         let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByScore") ?? false
         
         if isInAsc {
@@ -81,6 +85,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sortByName(_ sender: Any) {
+        self.listOfFilms = self.savedListOfFilms
+
         let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByName") ?? false
         
         if isInAsc {
@@ -103,6 +109,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func sortByDate(_ sender: Any) {
+        self.listOfFilms = self.savedListOfFilms
+
         let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByDate") ?? false
         
         if isInAsc {
@@ -120,6 +128,46 @@ class ViewController: UIViewController {
         }
         
         UserDefaults.standard.set(!isInAsc, forKey: "sortByDate")
+    }
+    
+    
+    @IBAction func filterLovedOrNo(_ sender: Any) {
+        
+        self.listOfFilms = self.savedListOfFilms
+        
+        var index: Int = -1
+        
+        let loved: Bool = UserDefaults.standard.bool(forKey: "loved") ?? false
+        
+        if loved {
+            for element in listOfFilms {
+                index = index + 1
+                var isLoved: Bool = UserDefaults.standard.bool(forKey: element.id!) ?? false
+                
+                if isLoved {
+                    listOfFilms.remove(at: index)
+                    index = index - 1
+                }
+                
+            }
+        } else {
+            for element in listOfFilms {
+                index = index + 1
+                var isLoved: Bool = UserDefaults.standard.bool(forKey: element.id!) ?? false
+                
+                if !isLoved {
+                    listOfFilms.remove(at: index)
+                    index = index - 1
+                }
+                
+            }
+        }
+        
+        tableFilms.dataSource = self
+        tableFilms.reloadData()
+        
+        UserDefaults.standard.set(!loved, forKey: "loved")
+        
     }
 }
 
