@@ -14,6 +14,7 @@ class ListFilmTableViewCell: UITableViewCell {
 
     
     
+    @IBOutlet weak var label_date: UILabel!
     @IBOutlet weak var image_film: UIImageView!
     @IBOutlet weak var bt_favorite: UIButton!
     @IBOutlet weak var score_label: UILabel!
@@ -38,7 +39,8 @@ class ListFilmTableViewCell: UITableViewCell {
             image_film.image = UIImage(named: id)
         }
         
-        title_label.text = film.title 
+        title_label.text = film.title
+        label_date.text = film.releaseDate
         score_label.text = "score : \(film.rtScore!)/100"
         changeButtonStatus(film: film)
     }
