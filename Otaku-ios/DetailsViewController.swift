@@ -13,6 +13,7 @@ class DetailsViewController: UIViewController {
     
     var idFilm: String?;
     
+    @IBOutlet weak var image_film: UIImageView!
     @IBOutlet weak var label_rtScore: UILabel!
     @IBOutlet weak var label_releaseDate: UILabel!
     @IBOutlet weak var label_producer: UILabel!
@@ -48,6 +49,10 @@ class DetailsViewController: UIViewController {
     }
     
     func fillFilmData(film: FilmDataResponse) {
+        if let id = idFilm {
+            
+        self.image_film.image = UIImage(named: id)
+        }
         self.label_title.text = film.title
         self.label_description.text = film.myDataDescription
         self.label_producer.text = film.producer
