@@ -42,8 +42,10 @@ class DetailsViewController: UIViewController {
             if let choice = isFavorite {
                 if choice {
                     bt_favoris.setImage(UIImage(named: "favorite"), for: .normal)
+                    
                 }else {
                     bt_favoris.setImage(UIImage(named: "notFavorite"), for: .normal)
+                        
                 }
             }
         }
@@ -75,7 +77,8 @@ class DetailsViewController: UIViewController {
         self.label_producer.text = film.producer
         self.label_director.text = film.director
         self.label_releaseDate.text = film.releaseDate
-        self.label_rtScore.text = film.rtScore
+        self.label_rtScore.text = "\(film.rtScore as! String)/100"
+        
 
     }
     

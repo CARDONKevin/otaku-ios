@@ -23,6 +23,11 @@ class ViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableFilms.reloadData()
+    }
+    
     func setup () {
         tableFilms.dataSource = self
         tableFilms.delegate = self
