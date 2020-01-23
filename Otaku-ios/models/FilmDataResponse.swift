@@ -14,7 +14,7 @@ class FilmDataResponse: Codable {
     var people, species, locations, vehicles: [String]?
     var url: String?
     var length: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, title
         case myDataDescription = "description"
@@ -23,7 +23,7 @@ class FilmDataResponse: Codable {
         case rtScore = "rt_score"
         case people, species, locations, vehicles, url, length
     }
-
+    
     init(id: String?, title: String?, myDataDescription: String?, director: String?, producer: String?, releaseDate: String?, rtScore: String?, people: [String]?, species: [String]?, locations: [String]?, vehicles: [String]?, url: String?, length: String?) {
         self.id = id
         self.title = title
@@ -39,5 +39,5 @@ class FilmDataResponse: Codable {
         self.url = url
         self.length = length
     }
-
+    
 }
