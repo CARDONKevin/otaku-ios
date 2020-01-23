@@ -37,7 +37,7 @@ class DetailsViewController: UIViewController {
     
     func changeButtonStatus() {
         if let id = idFilm {
-          isFavorite = UserDefaults.standard.bool(forKey: id) ?? false
+            isFavorite = UserDefaults.standard.bool(forKey: id)
             
             if let choice = isFavorite {
                 if choice {
@@ -45,7 +45,7 @@ class DetailsViewController: UIViewController {
                     
                 }else {
                     bt_favoris.setImage(UIImage(named: "notFavorite"), for: .normal)
-                        
+                    
                 }
             }
         }
@@ -59,7 +59,7 @@ class DetailsViewController: UIViewController {
                 case .success(let film):
                     self?.fillFilmData(film: film)
                     
-                    //
+                //
                 case .failure(let error):
                     print(error.errorDescription ?? "")
                 }
@@ -70,7 +70,7 @@ class DetailsViewController: UIViewController {
     func fillFilmData(film: FilmDataResponse) {
         if let id = idFilm {
             
-        self.image_film.image = UIImage(named: id)
+            self.image_film.image = UIImage(named: id)
         }
         self.label_title.text = film.title
         self.label_description.text = "Description :  \(film.myDataDescription!)"
@@ -79,15 +79,14 @@ class DetailsViewController: UIViewController {
         self.label_releaseDate.text = "Release date :  \(film.releaseDate!)"
         self.label_rtScore.text = "score : \(film.rtScore!)/100"
         
-
+        
     }
     
     
     @IBAction func addOrDeleteFavorite(_ sender: Any) {
         
         if let id = idFilm {
-            
-            let status: Bool = UserDefaults.standard.bool(forKey: id) ?? false
+            let status: Bool = UserDefaults.standard.bool(forKey: id)
             UserDefaults.standard.set(!status, forKey: id)
             
             changeButtonStatus()
@@ -95,15 +94,15 @@ class DetailsViewController: UIViewController {
         
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

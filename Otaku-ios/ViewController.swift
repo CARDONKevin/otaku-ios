@@ -12,7 +12,7 @@ import Alamofire
 class ViewController: UIViewController {
     
     var selectedFilm: FilmDataResponse?
-
+    
     @IBOutlet weak var tableFilms: UITableView!
     
     var listOfFilms: [FilmDataResponse] = []
@@ -38,19 +38,19 @@ class ViewController: UIViewController {
     }
     
     func getFilms(){
-    AF.request("https://ghibliapi.herokuapp.com/films",method: .get) .responseDecodable { [weak self](response: DataResponse<[FilmDataResponse], AFError>) in
-        switch response.result
-        {
-        case .success(let films):
-            self?.listOfFilms = films
-            self?.savedListOfFilms = films
-            self?.tableFilms.reloadData()
-            
+        AF.request("https://ghibliapi.herokuapp.com/films",method: .get) .responseDecodable { [weak self](response: DataResponse<[FilmDataResponse], AFError>) in
+            switch response.result
+            {
+            case .success(let films):
+                self?.listOfFilms = films
+                self?.savedListOfFilms = films
+                self?.tableFilms.reloadData()
+                
             //
-        case .failure(let error):
-            print(error.errorDescription ?? "")
+            case .failure(let error):
+                print(error.errorDescription ?? "")
+            }
         }
-    }
     }
     
     override func prepare(for segue:
@@ -64,21 +64,19 @@ class ViewController: UIViewController {
     
     @IBAction func sortByScore(_ sender: Any) {
         self.listOfFilms = self.savedListOfFilms
-
-        let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByScore") ?? false
+        
+        let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByScore")
         
         if isInAsc {
             if listOfFilms.count > 0 {
-                 self.listOfFilms = listOfFilms.sorted { Int($0.rtScore!)! >  Int($1.rtScore!)! }
-                 tableFilms.dataSource = self
-                 tableFilms.reloadData()
-             }
+                self.listOfFilms = listOfFilms.sorted { Int($0.rtScore!)! >  Int($1.rtScore!)! }
+                tableFilms.reloadData()
+            }
         } else {
             if listOfFilms.count > 0 {
-                      self.listOfFilms = listOfFilms.sorted { Int($0.rtScore!)! <  Int($1.rtScore!)! }
-                      tableFilms.dataSource = self
-                      tableFilms.reloadData()
-                  }
+                self.listOfFilms = listOfFilms.sorted { Int($0.rtScore!)! <  Int($1.rtScore!)! }
+                tableFilms.reloadData()
+            }
         }
         
         UserDefaults.standard.set(!isInAsc, forKey: "sortByScore")
@@ -86,43 +84,39 @@ class ViewController: UIViewController {
     
     @IBAction func sortByName(_ sender: Any) {
         self.listOfFilms = self.savedListOfFilms
-
-        let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByName") ?? false
+        
+        let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByName")
         
         if isInAsc {
             if listOfFilms.count > 0 {
                 self.listOfFilms = listOfFilms.sorted { $0.title! >  $1.title! }
-                tableFilms.dataSource = self
                 tableFilms.reloadData()
             }
         } else {
             if listOfFilms.count > 0 {
                 self.listOfFilms = listOfFilms.sorted { $0.title! <  $1.title! }
-                tableFilms.dataSource = self
                 tableFilms.reloadData()
             }
         }
         
         UserDefaults.standard.set(!isInAsc, forKey: "sortByName")
-
+        
     }
     
     
     @IBAction func sortByDate(_ sender: Any) {
         self.listOfFilms = self.savedListOfFilms
-
-        let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByDate") ?? false
+        
+        let isInAsc: Bool = UserDefaults.standard.bool(forKey: "sortByDate")
         
         if isInAsc {
             if listOfFilms.count > 0 {
                 self.listOfFilms = listOfFilms.sorted { Int($0.releaseDate!)! >  Int($1.releaseDate!)! }
-                tableFilms.dataSource = self
                 tableFilms.reloadData()
             }
         } else {
             if listOfFilms.count > 0 {
                 self.listOfFilms = listOfFilms.sorted { Int($0.releaseDate!)! <  Int($1.releaseDate!)! }
-                tableFilms.dataSource = self
                 tableFilms.reloadData()
             }
         }
@@ -133,38 +127,38 @@ class ViewController: UIViewController {
     
     @IBAction func filterByFavorite(_ sender: Any) {
         self.listOfFilms = self.savedListOfFilms
-
+        
         var index: Int = -1
-
-        let loved: Bool = UserDefaults.standard.bool(forKey: "loved") ?? false
-
+        
+        let loved: Bool = UserDefaults.standard.bool(forKey: "loved")
+        
         if loved {
             for element in listOfFilms {
                 index = index + 1
-                var isLoved: Bool = UserDefaults.standard.bool(forKey: element.id!) ?? false
-
+                let isLoved: Bool = UserDefaults.standard.bool(forKey: element.id!)
+                
                 if isLoved {
                     listOfFilms.remove(at: index)
                     index = index - 1
                 }
-
+                
             }
         } else {
             for element in listOfFilms {
                 index = index + 1
-                var isLoved: Bool = UserDefaults.standard.bool(forKey: element.id!) ?? false
-
+                let isLoved: Bool = UserDefaults.standard.bool(forKey: element.id!)
+                
                 if !isLoved {
                     listOfFilms.remove(at: index)
                     index = index - 1
                 }
-
+                
             }
         }
-
+        
         tableFilms.dataSource = self
         tableFilms.reloadData()
-
+        
         UserDefaults.standard.set(!loved, forKey: "loved")
     }
 }
@@ -177,7 +171,7 @@ extension ViewController: UITableViewDelegate {
         self.performSegue(withIdentifier: "showDetailFromList", sender: nil)
     }
     //func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-      //  return 80.0
+    //  return 80.0
     //}
 }
 
@@ -188,7 +182,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         if let cellDynamique = tableView.dequeueReusableCell(withIdentifier: "FilmCellID", for: indexPath) as? ListFilmTableViewCell {
             
             let correctFilm = listOfFilms[indexPath.row]
